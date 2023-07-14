@@ -1,0 +1,6 @@
+FROM node:slim
+WORKDIR /opt/api
+ENV isDevelopment=false
+COPY . .
+RUN npm i
+CMD ["npm","start"]

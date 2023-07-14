@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  web:
+    # container_name: ily-web
+    build: ./frontend
+    ports:
+      - 3000:3000
+  api:
+    # container_name: ily-api
+    build: ./backend
+    ports:
+      - 3001:3001
+    environment:
+      DB_URL: mongodb://db/titlelist
+  db:
+    # container_name: ily-db
+    image: mongo:4.0-xeniel
+    ports:
+      - 27017:27017
+    volumes:
+      - ilydb:/data/db
+      
+volumes:
+  ilydb:
+
+    # mongodb://mongodb:27017/titlelist
+
+    # MYSQL_DATABASE: blogdb
+    # MYSQL_USER: bloguser
+    # MYSQL_PASSWORD: test123
+    # MYSQL_RANDOM_ROOT_PASSWORD: "1"
+#   todo-app:
+#     container_name: dc-todo-app
+#     build: .
+#     ports:
+#       - 3000:3000
+#   mongodb:
+#     image: mongo
+#     ports:
+#       - 27017:27017
+#     volumes:
+#       - todo-app-data:/data/db
+# volumes:
+#   todo-app-data:

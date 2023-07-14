@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  localweb:
+    container_name: ily-web
+    build: ./web
+    ports:
+      - 3000:3000
+  
+  localdb:
+    container_name: ily-db
+    image: mongo:6.0.1
+    ports:
+      - 27017:27017
+    volumes:
+      - dbName:/data/db
+    # restart: always
+  localapi:
+    container_name: ily-api
+    build: ./api
+    ports:
+      - 4000:4000
+    depends_on:
+      - localdb
+    # environment:
+    #   DB_URL: mongodb://localdb/dbName
+    restart: on-failure  
+
+volumes:
+  dbName:

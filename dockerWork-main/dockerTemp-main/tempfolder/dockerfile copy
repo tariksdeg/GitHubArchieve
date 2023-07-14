@@ -1,0 +1,32 @@
+
+# bullseye-slim
+
+FROM node:14-slim
+WORKDIR /opt/node-server
+COPY app/ .
+RUN npm install
+CMD ["node", "app.js"]
+
+
+FROM node:14-slim
+WORKDIR /opt/node-todo-app
+COPY . .
+ENV PORT=4000
+EXPOSE 4000
+RUN npm install
+ENTRYPOINT [ "node" ]
+# CMD ["node", "app.js"]
+CMD ["app.js"]
+
+
+FROM ubuntu:18.04
+RUN apt-get update
+RUN apt-get install curl -y
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt-get install nodejs -y
+WORKDIR /opt/node-app
+COPY . /opt/node-app/
+ENV channel=kablosuzkedi
+# COPY . .
+# CMD ["node", "/opt/node-app/index.js"];
+CMD ["node", "index.js"];
