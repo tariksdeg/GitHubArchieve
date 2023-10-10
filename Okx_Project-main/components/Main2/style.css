@@ -1,0 +1,79 @@
+.wrapper {
+  --font-color-dark: #ffffff;
+  --font-color-light: black;
+  --bg-color: black;
+  --main-color: white;
+  position: relative;
+  width: 250px;
+  height: 36px;
+  background-color: var(--bg-color);
+  border: 2px solid var(--main-color);
+  border-radius: 34px;
+  display: flex;
+  flex-direction: row;
+  margin: 2rem;
+}
+
+.option {
+  width: 80.5px;
+  height: 28px;
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  appearance: none;
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.span {
+  color: var(--font-color-dark);
+}
+
+.input:checked + .btn {
+  background-color: var(--main-color);
+}
+
+.input:checked + .btn .span {
+  color: var(--font-color-light);
+}
+.para {
+  text-align: start;
+}
+.logo-img {
+  margin-top: 5rem;
+  text-align: left;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    margin: auto;
+  }
+  .para {
+    text-align: center;
+  }
+  .main4 {
+    margin: auto;
+    text-align: center;
+  }
+}
